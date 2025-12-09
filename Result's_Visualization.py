@@ -1,0 +1,12 @@
+for i in range(20):
+    plt.figure(figsize=(12, 8))
+    plt.subplot(1, 3, 1)
+    plt.imshow(test_images[i])
+    plt.title("Original Image")
+    plt.subplot(1, 3, 2)
+    plt.imshow(test_masks[i].squeeze(), cmap='gray')
+    plt.title("Ground Truth")
+    plt.subplot(1, 3, 3)
+    plt.imshow(predictions[i].squeeze(), cmap='gray')
+    plt.title(f"Predicted Mask\nDice: {dice_coefficient(test_masks[i], predictions[i]):.4f}, IoU: {iou_coefficient(test_masks[i], predictions[i]):.4f}")
+    plt.show()
